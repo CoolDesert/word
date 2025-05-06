@@ -1,0 +1,164 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    background-image: url('mario.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: relative; /* 添加相对定位 */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.word-display {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 20px 0;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+#britishBtn {
+    background-color: #9c27b0;
+}
+
+#britishBtn:hover {
+    background-color: #7b1fa2;
+}
+
+#americanBtn {
+    background-color: #3f51b5;
+}
+
+#americanBtn:hover {
+    background-color: #303f9f;
+}
+
+.hint {
+    color: #fa0303;
+    font-size: 1.2rem;
+    margin: 15px 0;
+    min-height: 30px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.stats {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    color: #0bef98;
+    position: absolute; /* 使用绝对定位 */
+    top: 10px; /* 距离顶部 10px */
+    left: 10px; /* 距离左侧 10px */
+}
+
+.result {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    min-height: 30px;
+    font-weight: bold;
+    white-space: pre-line;
+    color: #f6031b;
+}
+
+#hintBtn {
+    background-color: #2196F3;
+}
+
+#hintBtn:hover {
+    background-color: #0b7dda;
+}
+
+#nextBtn {
+    background-color: #ff9800;
+}
+
+#nextBtn:hover {
+    background-color: #e68a00;
+}
+
+/* 添加马里奥动画容器样式 */
+#marioAnimation {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: none; /* 默认隐藏 */
+}
+
+/* 错误统计区域样式 */
+.error-stats {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.error-stats h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.error-stats ol {
+    padding-left: 20px;
+    text-align: left;
+}
+
+.error-stats li {
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #555;
+}

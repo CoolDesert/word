@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语单词听写练习</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>英语单词听写练习</h1>
+        <div class="word-display" id="wordDisplay"></div>
+        <div class="button-group">
+            <button id="britishBtn">英音</button>
+            <button id="americanBtn">美音</button>
+            <!-- <button id="hintBtn">显示中文提示</button> -->
+        </div>
+        <div class="hint" id="hint"></div>
+        <div id="marioAnimation"></div>
+        <input type="text" id="userInput" placeholder="输入你听到的单词">
+        <button id="checkBtn">检查</button>
+        <div class="stats" id="stats"></div>
+        <div class="result" id="result"></div>
+        <button id="restartBtn">再来一轮</button>
+        <div class="error-stats">
+            <h3>错误率最高的单词</h3>
+            <div id="topErrorWords"></div>
+        </div>
+    </div>
+    <script src="words.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
