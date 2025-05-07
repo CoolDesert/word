@@ -109,6 +109,7 @@ function showResults() {
         wrongWords.forEach(word => {
             wrongList += `${word.english} - ${word.chinese}\n`;
         });
+        result.style.color = 'red';
         result.textContent = wrongList;
     }
 }
