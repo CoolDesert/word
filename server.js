@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.get('/tetris', (req, res) => {
+    res.sendFile(path.join(__dirname, 'tetris.html'));
+});
+
 app.listen(port, () => {
     console.log(`单词听写服务已启动: http://0.0.0.0:${port}`);
 });
