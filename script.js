@@ -11,7 +11,6 @@ const americanBtn = document.getElementById('americanBtn');
 const restartBtn = document.getElementById('restartBtn');
 
 const roundWordsCount = 30; // 每轮单词数量
-let currentWordIndex;
 let currentWord;
 let totalQuestions = 0;
 let correctAnswers = 0;
@@ -59,6 +58,7 @@ function nextWord() {
     userInput.focus();
     speakWord();
     showHint();
+    showTopErrorWords(true); // 显示错误率最高的单词, 隐藏当前单词
 }
 
 function shuffleArray(array) {
@@ -80,7 +80,7 @@ function checkAnswer() {
     totalQuestions++;
 
     const isCorrect = userAnswer === currentWord.english.toLowerCase();
-    showMarioAnimation(isCorrect);
+    // showMarioAnimation(isCorrect);
 
     if (isCorrect) {
         result.textContent = '正确!';
@@ -158,20 +158,27 @@ userInput.addEventListener('keypress', function (e) {
     }
 });
 
+// 限制输入框只接受英文字符和空格
+userInput.addEventListener('input', function () {
+    this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+});
+
 // 获取错误率最高的10个单词
 function getTopErrorWords() {
     const words = Object.keys(errorStats);
     return words
         .map(word => ({
             word,
-            errorRate: errorStats[word].errors / errorStats[word].attempts
+            errorRate: errorStats[word].errors / errorStats[word].attempts,
+            errors: errorStats[word].errors,
+            attempts: errorStats[word].attempts
         }))
         .sort((a, b) => b.errorRate - a.errorRate)
         .slice(0, 10);
 }
 
 // 显示错误率最高的单词
-function showTopErrorWords() {
+function showTopErrorWords(hide_current = false) {
     const topWords = getTopErrorWords();
     const topWordsContainer = document.getElementById('topErrorWords');
 
@@ -184,7 +191,11 @@ function showTopErrorWords() {
     topWords.forEach(item => {
         const wordData = words.find(w => w.english === item.word);
         const chinese = wordData ? wordData.chinese : '';
-        html += `<li>${item.word} - ${chinese} (错误率: ${Math.round(item.errorRate * 100)}%)</li>`;
+        if (hide_current && item.word === currentWord.english) {
+            html += `<li> xxxxxxxx - ${chinese} (错误率: ${Math.round(item.errorRate * 100)}%) ${item.errors}/${item.attempts}</li>`;
+        } else {
+            html += `<li>${item.word} - ${chinese} (错误率: ${Math.round(item.errorRate * 100)}%) ${item.errors}/${item.attempts}</li>`;
+        }
     });
     html += '</ol>';
     topWordsContainer.innerHTML = html;
@@ -204,4 +215,3 @@ function updateErrorStats(isCorrect) {
 
 // 初始化应用
 initRound();
-showTopErrorWords();
